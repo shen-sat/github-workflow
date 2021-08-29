@@ -10,6 +10,10 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - run: echo "action_state=yellow" >> $GITHUB_ENV
-      - run: bundle exec rspec
-      - run: echo "${{ env.action_state }}"
+      
+      - name: Run tests
+        id: run_tests
+        run: echo "::set-output name=random-id::$(curl -s -o /dev/null -w "%{http_code}" http://www.example.org/)"
+
+      - name: Slack Notification
+        run: echo ${{ steps.run_tests.outputs.random-id }}
