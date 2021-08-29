@@ -11,9 +11,9 @@ jobs:
         with:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: save a file
-        run: echo `bundle exec rspec` > math-homework.txt
+        run: echo `bundle exec rspec` > results.txt
       - name: upload a file        
         uses: actions/upload-artifact@v2
         with:
-          name: upload-test
-          path: math-homework.txt
+          name: upload-results
+          path: results.txt

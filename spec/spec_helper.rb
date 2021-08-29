@@ -97,4 +97,13 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  results = []
+  config.before(:example) do |expectation|
+    results << expectation.description
+  end
+  config.after(:suite) do |_nothing|
+    results.each do |result|
+      puts "*****#{result}"
+    end
+  end
 end
