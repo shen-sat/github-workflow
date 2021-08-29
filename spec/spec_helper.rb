@@ -99,7 +99,8 @@ RSpec.configure do |config|
 =end
   results = []
   config.before(:example) do |expectation|
-    results << expectation.description
+    expectation_identifier = [expectation.id, expectation.description] 
+    results << expectation_identifier
   end
   config.after(:suite) do |_nothing|
     puts "***RESULTS BEGIN***"
