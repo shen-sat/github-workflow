@@ -10,4 +10,6 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - run: echo "action_state=yellow" >> $GITHUB_ENV
       - run: bundle exec rspec
+      - run: echo "${{ env.action_state }}"
