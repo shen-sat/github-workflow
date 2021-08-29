@@ -102,8 +102,10 @@ RSpec.configure do |config|
     results << expectation.description
   end
   config.after(:suite) do |_nothing|
+    puts "***RESULTS BEGIN***"
     results.each do |result|
       puts "#{result},"
     end
+    puts "***RESULTS END***"
   end
 end
